@@ -3,34 +3,33 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - main  # Запускать CI при пуше в ветку main
   pull_request:
     branches:
-      - main
+      - main  # Запускать CI при создании PR в ветку main
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
+  lint-and-check:
+    runs-on: ubuntu-latest  # Используем последнюю версию Ubuntu
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      # Шаг 1: Проверка кода
+      - name: Checkout code
+        uses: actions/checkout@v3  # Клонируем репозиторий
 
-    - name: Install dependencies
-      run: npm install
+      # Шаг 2: Установка Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"  # Укажите версию Python, которую используете
 
-    - name: Run linter
-      run: npx ruff lint
+      # Шаг 3: Установка зависимостей
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff  # Устанавливаем ruff
 
-  quality-check:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run code quality check
-      run: npx ruff quality
+      # Шаг 4: Запуск ruff для проверки кода
+      - name: Run ruff
+        run: |
+          ruff check .  # Запуск ruff для проверки всего кода в репозитории
