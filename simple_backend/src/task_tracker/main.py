@@ -104,4 +104,4 @@ def delete_task(task_id: int):
 # print(create_task("Learning FastAPI"))
 # print(create_task("Learning Django"))
 # print(delete_task(2))
-print(get_tasks())
+# print(get_tasks())
