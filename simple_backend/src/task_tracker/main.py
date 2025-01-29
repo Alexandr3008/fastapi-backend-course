@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pathlib import Path
 import json
 from pydantic import BaseModel
+
 app = FastAPI()
 
 
@@ -11,7 +12,7 @@ class TaskStorage:
         if not self.file_path.exists():
             self.file_path.write_text("[]")
 
-    def read_tasks(self) -> list[dict]:
+    def read_tasks(self):
         with open(self.file_path, "r") as file:
             return json.load(file)
 
@@ -54,7 +55,7 @@ class Task(BaseModel):
     title: str
     status: str
 
-@app.get("/tasks", response_model=list[Task])
+@app.get("/tasks")
 def get_tasks():
     return storage.read_tasks()
 
@@ -88,19 +89,19 @@ def delete_task(task_id: int):
         return f"Deleted task: {task}"
     except IndexError:
         return "Invalid id, task not found"
-
-print(create_task("Learning Python"))
-print(create_task("Learning GitHub"))
-print(create_task("Learning FastAPI"))
-print(create_task("Learning Django"))
-print(get_tasks())
-print(update_task(2, "Python & FastAPI", "Done"))
-print(update_task(1, None, "Done"))
-
-print(get_tasks())
-print(create_task("Learning Python"))
-print(create_task("Learning GitHub"))
-print(create_task("Learning FastAPI"))
-print(create_task("Learning Django"))
-print(delete_task(2))
+#
+# print(create_task("Learning Python"))
+# print(create_task("Learning GitHub"))
+# print(create_task("Learning FastAPI"))
+# print(create_task("Learning Django"))
+# print(get_tasks())
+# print(update_task(2, "Python & FastAPI", "Done"))
+# print(update_task(1, None, "Done"))
+#
+# print(get_tasks())
+# print(create_task("Learning Python"))
+# print(create_task("Learning GitHub"))
+# print(create_task("Learning FastAPI"))
+# print(create_task("Learning Django"))
+# print(delete_task(2))
 print(get_tasks())
