@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from pathlib import Path
 import json
 from pydantic import BaseModel
-
+import os
+from cloud import cloud_storage
 app = FastAPI()
 
 
@@ -48,12 +49,15 @@ class TaskStorage:
         self.write_tasks(tasks)
 
 
+
 storage = TaskStorage()
+
 
 class Task(BaseModel):
     id: int
     title: str
     status: str
+
 
 @app.get("/tasks")
 def get_tasks():
@@ -65,6 +69,7 @@ def create_task(title: str, status: str = "ToDo"):
     task_id = len(storage.read_tasks()) + 1
     new_task = {"id": task_id, "title": title, "status": status}
     storage.add_task(new_task)
+    cloud_storage.write_tasks([task for task in storage.read_tasks()])
     return new_task
 
 
@@ -78,6 +83,7 @@ def update_task(task_id: int, title: str = None, status: str = None):
     if status:
         task["status"] = status
     storage.update_task(task_id, task)
+    cloud_storage.write_tasks([task for task in storage.read_tasks()])
     return task
 
 
@@ -86,10 +92,16 @@ def delete_task(task_id: int):
     try:
         task = storage.get_task(task_id)
         storage.delete_task(task_id)
+        cloud_storage.write_tasks([task for task in storage.read_tasks()])
         return f"Deleted task: {task}"
     except IndexError:
         return "Invalid id, task not found"
-#
+
+
+@app.get("/tasks/cloud")
+def read_cloud_tasks():
+    return cloud_storage.read_tasks()
+
 # print(create_task("Learning Python"))
 # print(create_task("Learning GitHub"))
 # print(create_task("Learning FastAPI"))
@@ -97,11 +109,10 @@ def delete_task(task_id: int):
 # print(get_tasks())
 # print(update_task(2, "Python & FastAPI", "Done"))
 # print(update_task(1, None, "Done"))
-#
 # print(get_tasks())
 # print(create_task("Learning Python"))
 # print(create_task("Learning GitHub"))
 # print(create_task("Learning FastAPI"))
-# print(create_task("Learning Django"))
-# print(delete_task(2))
+# print(delete_task(30))
+# print(delete_task(29))
 # print(get_tasks())

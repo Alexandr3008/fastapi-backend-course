@@ -6,92 +6,138 @@
     },
     {
         "id": 2,
-        "name": "Learning FastAPI",
-        "status": "ToDo"
+        "name": "Learning Django",
+        "status": "Done",
+        "title": "Python & FastAPI"
     },
     {
         "id": 3,
-        "name": "Learning Django",
+        "title": "Learning Python",
         "status": "ToDo"
     },
     {
         "id": 4,
-        "title": "Learning Python",
+        "title": "Learning GitHub",
         "status": "ToDo"
     },
     {
         "id": 5,
-        "title": "Learning GitHub",
+        "title": "Learning FastAPI",
         "status": "ToDo"
     },
     {
         "id": 6,
-        "title": "Learning FastAPI",
+        "title": "Learning Django",
         "status": "ToDo"
     },
     {
         "id": 7,
-        "title": "Learning Django",
+        "title": "Learning Python",
         "status": "ToDo"
     },
     {
         "id": 8,
-        "title": "Learning Python",
+        "title": "Learning GitHub",
         "status": "ToDo"
     },
     {
         "id": 9,
-        "title": "Learning GitHub",
+        "title": "Learning FastAPI",
         "status": "ToDo"
     },
     {
         "id": 10,
-        "title": "Learning FastAPI",
+        "title": "Learning Django",
         "status": "ToDo"
     },
     {
         "id": 11,
-        "title": "Learning Django",
+        "title": "Learning Python",
         "status": "ToDo"
     },
     {
         "id": 12,
-        "title": "Learning Python",
+        "title": "Learning GitHub",
         "status": "ToDo"
     },
     {
         "id": 13,
-        "title": "Learning GitHub",
+        "title": "Learning FastAPI",
         "status": "ToDo"
     },
     {
         "id": 14,
-        "title": "Learning FastAPI",
+        "title": "Learning Django",
         "status": "ToDo"
     },
     {
         "id": 15,
-        "title": "Learning Django",
-        "status": "ToDo"
-    },
-    {
-        "id": 16,
         "title": "Learning Python",
         "status": "ToDo"
     },
     {
-        "id": 17,
+        "id": 16,
         "title": "Learning GitHub",
         "status": "ToDo"
     },
     {
-        "id": 18,
+        "id": 17,
         "title": "Learning FastAPI",
         "status": "ToDo"
     },
     {
-        "id": 19,
+        "id": 18,
         "title": "Learning Django",
+        "status": "ToDo"
+    },
+    {
+        "id": 19,
+        "title": "Learning Python",
+        "status": "ToDo"
+    },
+    {
+        "id": 20,
+        "title": "Learning GitHub",
+        "status": "ToDo"
+    },
+    {
+        "id": 21,
+        "title": "Learning FastAPI",
+        "status": "ToDo"
+    },
+    {
+        "id": 22,
+        "title": "Learning Django",
+        "status": "ToDo"
+    },
+    {
+        "id": 23,
+        "title": "Learning Python",
+        "status": "ToDo"
+    },
+    {
+        "id": 24,
+        "title": "Learning GitHub",
+        "status": "ToDo"
+    },
+    {
+        "id": 25,
+        "title": "Learning FastAPI",
+        "status": "ToDo"
+    },
+    {
+        "id": 26,
+        "title": "Learning Django",
+        "status": "ToDo"
+    },
+    {
+        "id": 27,
+        "title": "Add ToDo",
+        "status": "ToDo"
+    },
+    {
+        "id": 28,
+        "title": "Project",
         "status": "ToDo"
     }
 ]
